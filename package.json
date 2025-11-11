@@ -1,0 +1,32 @@
+{
+  "name": "carnegie-education-app",
+  "version": "1.0.0",
+  "description": "卡内基教育小程序",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy:surge": "vite build && cp dist/index.html dist/200.html && surge ./dist carnegie-education-app-a9f2c7e1.surge.sh",
+    "deploy:surge:preview": "vite build && cp dist/index.html dist/200.html && surge ./dist",
+    "deploy:surge:ci": "vite build && cp dist/index.html dist/200.html && surge --project ./dist --domain carnegie-education-app-a9f2c7e1.surge.sh --token $SURGE_TOKEN"
+  },
+  "dependencies": {
+    "netlify-cli": "^23.9.5",
+    "surge": "^0.24.6",
+    "vercel": "^48.6.7",
+    "vue": "^3.3.4",
+    "vue-router": "^4.6.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.5"
+  },
+  "keywords": [
+    "vue",
+    "education",
+    "miniprogram"
+  ],
+  "author": "",
+  "license": "MIT"
+}
