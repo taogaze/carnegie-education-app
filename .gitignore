@@ -1,9 +1,0 @@
-node_modules/
-dist/
-dist-build.zip
-.DS_Store
-.env
-*.local
-coverage/
-/*.log
-/.cache
