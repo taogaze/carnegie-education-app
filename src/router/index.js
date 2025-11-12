@@ -44,7 +44,8 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  // 使用 Vite 的 base 作为路由基础路径，保证在 /carnegie-education-app/ 下首屏能够正确匹配到 '/'
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
   scrollBehavior(to, from, savedPosition) {
     // 页面切换时滚动到顶部

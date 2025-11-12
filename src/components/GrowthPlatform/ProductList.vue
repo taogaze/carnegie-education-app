@@ -26,12 +26,12 @@ export default {
     return {
       products: {
         enterprise: [
-          { image: '/assets/Frame%20427321926.jpg' },
-          { image: '/assets/Frame%20427321927.jpg' },
-          { image: '/assets/Frame%20427321928.jpg' },
-          { image: '/assets/Frame%20427321929.jpg' },
-          { image: '/assets/Frame%20427321930.jpg' },
-          { image: '/assets/Frame%20427321931.jpg' },
+          { image: import.meta.env.BASE_URL + 'assets/Frame%20427321926.jpg' },
+          { image: import.meta.env.BASE_URL + 'assets/Frame%20427321927.jpg' },
+          { image: import.meta.env.BASE_URL + 'assets/Frame%20427321928.jpg' },
+          { image: import.meta.env.BASE_URL + 'assets/Frame%20427321929.jpg' },
+          { image: import.meta.env.BASE_URL + 'assets/Frame%20427321930.jpg' },
+          { image: import.meta.env.BASE_URL + 'assets/Frame%20427321931.jpg' },
         ],
         // 个人成长（原 teenager）
         teenager: [

@@ -50,7 +50,7 @@ export default {
           price: 299,
           originalPrice: 399,
           color: '#FF6B6B',
-          image: '/assets/banner/课程素材/Frame 427320713.jpg'
+          image: import.meta.env.BASE_URL + 'assets/banner/课程素材/Frame 427320713.jpg'
         },
         {
           id: 2,
@@ -61,7 +61,7 @@ export default {
           price: 0,
           originalPrice: 499,
           color: '#4ECDC4',
-          image: '/assets/banner/课程素材/Frame 427321977.jpg'
+          image: import.meta.env.BASE_URL + 'assets/banner/课程素材/Frame 427321977.jpg'
         },
         {
           id: 3,
@@ -72,7 +72,7 @@ export default {
           price: 599,
           originalPrice: 799,
           color: '#45B7D1',
-          image: '/assets/banner/课程素材/Frame 427321978.jpg'
+          image: import.meta.env.BASE_URL + 'assets/banner/课程素材/Frame 427321978.jpg'
         }
       ]
     }

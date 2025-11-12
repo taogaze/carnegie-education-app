@@ -40,26 +40,26 @@ export default {
         {
           id: 1,
           title: '公众演讲',
-          image: '/assets/banner/banner2.jpg',
+          image: import.meta.env.BASE_URL + 'assets/banner/banner2.jpg',
           gradient: ['#667eea', '#764ba2']
         },
         {
           id: 2,
           title: '人际沟通',
-          image: '/assets/banner/banner3.jpg',
+          image: import.meta.env.BASE_URL + 'assets/banner/banner3.jpg',
           gradient: ['#f093fb', '#f5576c']
         },
         {
           id: 3,
           title: '领导力培养',
-          image: '/assets/banner/banner4.jpg',
+          image: import.meta.env.BASE_URL + 'assets/banner/banner4.jpg',
           gradient: ['#4facfe', '#00f2fe']
         },
         // 复制第一张图片到末尾，用于无缝循环
         {
           id: 4,
           title: '公众演讲',
-          image: '/assets/banner/banner2.jpg',
+          image: import.meta.env.BASE_URL + 'assets/banner/banner2.jpg',
           gradient: ['#667eea', '#764ba2']
         }
       ]
