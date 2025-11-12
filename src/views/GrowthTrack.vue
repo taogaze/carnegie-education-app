@@ -140,10 +140,10 @@ export default {
       joinCounts: {},
       // 热门社群：封面 + 名称（封面暂用示例图，后续可替换为 Figma/接口图片）
       hotCommunities: [
-        { name: '企业家交流俱乐部', cover: 'assets/hot-communities/Frame 427321936.jpg' },
-        { name: '口才实战演练社群', cover: 'assets/hot-communities/Frame 427321937.jpg' },
-        { name: '自律互助群', cover: 'assets/hot-communities/Frame 427321938.jpg' },
-        { name: '职场快速提升', cover: 'assets/hot-communities/Frame 427321939.jpg' },
+        { name: '企业家交流俱乐部', cover: 'assets/hot-communities/frame-427321936.jpg' },
+        { name: '口才实战演练社群', cover: 'assets/hot-communities/frame-427321937.jpg' },
+        { name: '自律互助群', cover: 'assets/hot-communities/frame-427321938.jpg' },
+        { name: '职场快速提升', cover: 'assets/hot-communities/frame-427321939.jpg' },
         { name: '亲子沟通指导群', cover: 'assets/hot-communities/feed.jpg' }
       ],
       activities: [
