@@ -97,6 +97,11 @@ export default {
   font-size: 12px;
   line-height: 18px;
   color: #D2D2D2;
+  /* 始终居中：使用 flex 居中内部元素 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 24px 0;
 }

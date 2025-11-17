@@ -667,8 +667,16 @@ export default {
   font-size: 12px;
   line-height: 18px;
   color: #D2D2D2;
+  /* 始终居中：使用 flex 居中内部元素 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 24px 0;
+  /* 在 grid 布局中占满整行并自身居中（适配不同屏幕宽度） */
+  grid-column: 1 / -1;
+  justify-self: center;
 }
 .list-footer-logo {
   width: 74px;

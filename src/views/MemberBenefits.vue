@@ -1,137 +1,64 @@
 <template>
-  <div class="member-benefits">
-    <div class="page-header">
-      <h1>会员权益</h1>
-      <p>专享特权，解锁更多可能</p>
-    </div>
-    
-    <div class="benefits-content">
-      <!-- 会员状态 -->
-      <div class="member-status">
-        <div class="status-card">
-          <div class="member-level">
-            <div class="level-icon">👑</div>
-            <div class="level-info">
-              <h3>黄金会员</h3>
-              <p>有效期至 2024年12月31日</p>
+  <div class="member-benefits page">
+    <!-- 头部封面（来自 Figma：11:296） -->
+    <section class="hero" aria-label="会员权益封面">
+      <div class="hero-cover" :style="{ backgroundImage: `url('${coverUrl}')` }"></div>
+      <!-- 用户信息（距离页面顶部 125px） -->
+      <div class="profile" role="region" aria-label="用户信息">
+        <div class="avatar" :style="avatarStyle">
+          <img v-if="user.avatar" :src="userAvatarUrl" alt="用户头像" />
+        </div>
+        <div class="meta">
+          <div class="name">{{ user.name }}</div>
+          <div class="phone">{{ maskedPhone }}</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-wrap">
+      <!-- 会员卡（来自 Figma：11:377） -->
+      <section class="member-card" aria-label="会员卡" :style="{ backgroundImage: `url('${memberCardUrl}')` }">
+        <div class="card-content">
+          <!-- Figma 11:516 内容实现 -->
+          <div class="tier-vertical">
+            <div class="tier-header">
+              <img class="tier-icon" :src="tierIconUrl" alt="会员等级图标" />
+              <div class="spacer-4" aria-hidden="true"></div>
+              <div class="tier-label">实践学员</div>
+            </div>
+            <div class="tier-subrow">
+              <div class="tier-note">萌芽学员享受以下权益</div>
+              <button class="more-btn" type="button">更多权益</button>
             </div>
           </div>
-          <div class="member-progress">
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 75%"></div>
-            </div>
-            <p>距离白金会员还需 250 积分</p>
-          </div>
         </div>
-      </div>
-      
-      <!-- 专享权益 -->
-      <div class="exclusive-benefits">
-        <h2>专享权益</h2>
-        <div class="benefits-grid">
-          <div class="benefit-card active">
-            <div class="benefit-icon">🎯</div>
-            <h3>优先学习</h3>
-            <p>新课程优先体验权</p>
-            <div class="benefit-status">已开通</div>
+        <!-- 卡片底部装饰图片 -->
+        <img class="card-bottom-overlay" :src="cardBottomUrl" alt="" aria-hidden="true" />
+      </section>
+
+      <!-- 功能区（设计稿：我的福利等入口；此处给出示例占位） -->
+      <div class="features-container">
+        <section class="features" aria-label="我的福利">
+          <h3 class="features-title">我的福利</h3>
+          <div class="features-grid">
+            <button class="feature" type="button">
+              <img class="feat-icon" :src="giftIconUrl" alt="礼包中心" />
+              <span class="feat-name">礼包中心</span>
+            </button>
+            <button class="feature" type="button">
+              <img class="feat-icon" :src="courseIconUrl" alt="课程权益" />
+              <span class="feat-name">课程权益</span>
+            </button>
+            <button class="feature" type="button">
+              <img class="feat-icon" :src="consultantIconUrl" alt="专属顾问" />
+              <span class="feat-name">专属顾问</span>
+            </button>
+            <button class="feature" type="button">
+              <img class="feat-icon" :src="certIconUrl" alt="认证加速" />
+              <span class="feat-name">认证加速</span>
+            </button>
           </div>
-          
-          <div class="benefit-card active">
-            <div class="benefit-icon">💬</div>
-            <h3>专属客服</h3>
-            <p>1对1专属学习顾问</p>
-            <div class="benefit-status">已开通</div>
-          </div>
-          
-          <div class="benefit-card active">
-            <div class="benefit-icon">📚</div>
-            <h3>资料下载</h3>
-            <p>课程资料免费下载</p>
-            <div class="benefit-status">已开通</div>
-          </div>
-          
-          <div class="benefit-card locked">
-            <div class="benefit-icon">🏆</div>
-            <h3>认证加速</h3>
-            <p>认证考试优先通道</p>
-            <div class="benefit-status">白金专享</div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- 会员等级 -->
-      <div class="member-levels">
-        <h2>会员等级</h2>
-        <div class="levels-container">
-          <div class="level-item completed">
-            <div class="level-badge">🥉</div>
-            <h4>青铜会员</h4>
-            <p>0-99 积分</p>
-            <ul>
-              <li>基础课程学习</li>
-              <li>社区交流权限</li>
-            </ul>
-          </div>
-          
-          <div class="level-item completed">
-            <div class="level-badge">🥈</div>
-            <h4>白银会员</h4>
-            <p>100-499 积分</p>
-            <ul>
-              <li>进阶课程解锁</li>
-              <li>学习资料下载</li>
-            </ul>
-          </div>
-          
-          <div class="level-item current">
-            <div class="level-badge">🥇</div>
-            <h4>黄金会员</h4>
-            <p>500-999 积分</p>
-            <ul>
-              <li>全部课程访问</li>
-              <li>专属客服支持</li>
-              <li>优先体验新功能</li>
-            </ul>
-          </div>
-          
-          <div class="level-item locked">
-            <div class="level-badge">💎</div>
-            <h4>白金会员</h4>
-            <p>1000+ 积分</p>
-            <ul>
-              <li>认证考试优先通道</li>
-              <li>专家一对一指导</li>
-              <li>定制学习计划</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      
-      <!-- 积分商城 -->
-      <div class="points-mall">
-        <h2>积分商城</h2>
-        <div class="mall-grid">
-          <div class="mall-item">
-            <div class="item-image">🎁</div>
-            <h4>学习礼包</h4>
-            <p class="item-price">100 积分</p>
-            <button class="redeem-btn">兑换</button>
-          </div>
-          
-          <div class="mall-item">
-            <div class="item-image">📖</div>
-            <h4>电子书籍</h4>
-            <p class="item-price">200 积分</p>
-            <button class="redeem-btn">兑换</button>
-          </div>
-          
-          <div class="mall-item">
-            <div class="item-image">🏅</div>
-            <h4>认证券</h4>
-            <p class="item-price">500 积分</p>
-            <button class="redeem-btn">兑换</button>
-          </div>
-        </div>
+        </section>
       </div>
     </div>
   </div>
@@ -139,314 +66,224 @@
 
 <script>
 export default {
-  name: 'MemberBenefits'
+  name: 'MemberBenefits',
+  data() {
+    return {
+      // 可替换为实际数据来源（Vuex/Pinia/接口返回）
+      user: {
+        name: '张三',
+        phone: '13800138000',
+        avatar: 'assets/member-benefits/user-avatar.webp'
+      }
+    }
+  },
+  computed: {
+    coverUrl() {
+      return import.meta.env.BASE_URL + 'assets/member-benefits/member-benefits-cover.png'
+    },
+    cardUrl() {
+      return import.meta.env.BASE_URL + 'assets/member-benefits/member-card.png'
+    },
+    memberCardUrl() {
+      return import.meta.env.BASE_URL + 'assets/member-benefits/member-card-bg.jpg'
+    },
+    tierIconUrl() {
+      return import.meta.env.BASE_URL + 'assets/member-benefits/tier-icon.svg'
+    },
+    cardBottomUrl() {
+      return import.meta.env.BASE_URL + 'assets/member-benefits/member-card-bottom.png'
+    },
+    giftIconUrl() {
+      return import.meta.env.BASE_URL + 'assets/member-benefits/deal nav.svg'
+    },
+    courseIconUrl() {
+      return import.meta.env.BASE_URL + 'assets/member-benefits/rights nav.svg'
+    },
+    consultantIconUrl() {
+      return import.meta.env.BASE_URL + 'assets/member-benefits/wechat.svg'
+    },
+    certIconUrl() {
+      return import.meta.env.BASE_URL + 'assets/member-benefits/activ nav.svg'
+    },
+    maskedPhone() {
+      const p = this.user.phone || ''
+      // 简单掩码：保留前三位与后四位
+      return p.replace(/^(\d{3})\d*(\d{4})$/, '$1****$2')
+    },
+    userAvatarUrl() {
+      const a = this.user.avatar
+      if (!a) return ''
+      // 绝对地址或以 / 开头，直接使用；否则拼接 BASE_URL
+      if (/^https?:\/\//.test(a) || a.startsWith('/')) return a
+      return import.meta.env.BASE_URL + a
+    },
+    avatarStyle() {
+      return { backgroundColor: 'transparent' }
+    }
+  }
 }
 </script>
 
 <style scoped>
 .member-benefits {
-  padding: 20px;
-  background: #f8f9fa;
+  background: #F8F8F9;
   min-height: 100vh;
 }
 
-.page-header {
-  text-align: center;
-  margin-bottom: 30px;
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+}
+.hero-cover {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
 }
 
-.page-header h1 {
-  font-size: 28px;
-  font-weight: bold;
-  color: #1a1a1a;
-  margin-bottom: 8px;
-}
-
-.page-header p {
-  font-size: 16px;
-  color: #666;
-}
-
-.benefits-content {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* 会员状态 */
-.member-status {
-  margin-bottom: 40px;
-}
-
-.status-card {
-  background: linear-gradient(135deg, #FFD700, #FFA500);
-  border-radius: 16px;
-  padding: 24px;
-  color: white;
-}
-
-.member-level {
+/* 用户信息卡片（绝对定位到距离页面顶部 125px，居中） */
+.profile {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: none;
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
-}
-
-.level-icon {
-  font-size: 48px;
-  margin-right: 16px;
-}
-
-.level-info h3 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 4px;
-}
-
-.level-info p {
-  font-size: 14px;
-  opacity: 0.9;
-}
-
-.progress-bar {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-  height: 8px;
-  margin-bottom: 8px;
-}
-
-.progress-fill {
-  background: white;
-  border-radius: 10px;
-  height: 100%;
-  transition: width 0.3s ease;
-}
-
-.member-progress p {
-  font-size: 12px;
-  opacity: 0.9;
-}
-
-/* 专享权益 */
-.exclusive-benefits {
-  margin-bottom: 40px;
-}
-
-.exclusive-benefits h2 {
-  font-size: 22px;
-  font-weight: bold;
-  color: #1a1a1a;
-  margin-bottom: 20px;
-}
-
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.benefit-card {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-}
-
-.benefit-card.active:hover {
-  transform: translateY(-2px);
-}
-
-.benefit-card.locked {
-  opacity: 0.6;
-  filter: grayscale(0.5);
-}
-
-.benefit-icon {
-  font-size: 40px;
-  margin-bottom: 16px;
-}
-
-.benefit-card h3 {
-  font-size: 18px;
-  font-weight: bold;
-  color: #1a1a1a;
-  margin-bottom: 8px;
-}
-
-.benefit-card p {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 12px;
-}
-
-.benefit-status {
-  font-size: 12px;
-  padding: 4px 12px;
-  border-radius: 12px;
-  display: inline-block;
-}
-
-.benefit-card.active .benefit-status {
-  background: #E8F5E8;
-  color: #4CAF50;
-}
-
-.benefit-card.locked .benefit-status {
-  background: #FFF3E0;
-  color: #FF9800;
-}
-
-/* 会员等级 */
-.member-levels {
-  margin-bottom: 40px;
-}
-
-.member-levels h2 {
-  font-size: 22px;
-  font-weight: bold;
-  color: #1a1a1a;
-  margin-bottom: 20px;
-}
-
-.levels-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.level-item {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
-
-.level-item.current {
-  border: 2px solid #FFD700;
-  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.3);
-}
-
-.level-item.locked {
-  opacity: 0.6;
-  filter: grayscale(0.5);
-}
-
-.level-badge {
-  font-size: 48px;
-  margin-bottom: 16px;
-}
-
-.level-item h4 {
-  font-size: 18px;
-  font-weight: bold;
-  color: #1a1a1a;
-  margin-bottom: 8px;
-}
-
-.level-item > p {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 16px;
-}
-
-.level-item ul {
-  list-style: none;
-  padding: 0;
+  justify-content: flex-start;
   text-align: left;
+  gap: 12px;
+  padding: 16px 16px;
+  background: transparent;
+  backdrop-filter: none;
+  border-radius: 0;
+  box-shadow: none;
+  z-index: 1;
 }
-
-.level-item li {
-  font-size: 12px;
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #666;
-  margin-bottom: 4px;
-  padding-left: 16px;
-  position: relative;
+  font-weight: 600;
+  border: 1px solid #FFFFFF;
+  box-sizing: border-box;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.meta { display: grid; grid-auto-rows: min-content; }
+.name { font-size: 20px; line-height: 28px; font-weight: 600; color: #FFFFFF; }
+.phone { font-size: 14px; line-height: 20px; color: #FFFFFF; }
+
+.content-wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
 }
 
-.level-item li::before {
-  content: '✓';
+.features-container {
+  width: 100%;
+  max-width: 100%;
+}
+
+.member-card {
+  position: relative;
+  height: 223px;
+  border-radius: 24px;
+  overflow: hidden;
+  margin: 0px 0 16px;
+  background: #F5F5F5;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.card-bottom-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  pointer-events: none;
+}
+.card-content {
   position: absolute;
   left: 0;
-  color: #4CAF50;
-}
-
-/* 积分商城 */
-.points-mall h2 {
-  font-size: 22px;
-  font-weight: bold;
-  color: #1a1a1a;
-  margin-bottom: 20px;
-}
-
-.mall-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-}
-
-.mall-item {
-  background: white;
-  border-radius: 12px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   padding: 20px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
-.item-image {
-  font-size: 48px;
-  margin-bottom: 16px;
-}
-
-.mall-item h4 {
+.tier-vertical { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+.tier-header { display: flex; align-items: center; gap: 0; }
+.tier-icon { width: 24px; height: 24px; object-fit: contain; }
+.spacer-4 { width: 4px; flex: 0 0 4px; display: inline-block; }
+.tier-label { font-family: 'PingFang SC'; font-weight: 500; font-size: 21px; line-height: 1em; color: #1C1C1D; }
+.tier-subrow { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: 0; }
+.tier-note { font-family: 'PingFang SC'; font-weight: 400; font-size: 12px; line-height: 1em; color: #7A8294; }
+.more-btn { font-family: 'PingFang SC'; font-weight: 500; font-size: 12px; line-height: 1em; color: #F3D09F; background: #1F222C; border: none; border-radius: 99px; padding: 6px 12px; }
+.card-title {
   font-size: 16px;
-  font-weight: bold;
-  color: #1a1a1a;
-  margin-bottom: 8px;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin: 0 0 8px 0;
 }
+.tier-list { display: grid; grid-auto-rows: min-content; gap: 6px; }
+.tier-item { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #1A1A1A; }
+.tier-dot { width: 6px; height: 6px; border-radius: 50%; background: #D2D2D2; display: inline-block; }
 
-.item-price {
-  font-size: 14px;
-  color: #FF9800;
-  font-weight: bold;
-  margin-bottom: 16px;
-}
-
-.redeem-btn {
-  background: #2196F3;
-  color: white;
-  border: none;
+.features {
+  background: #FFFFFF;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
   border-radius: 8px;
-  padding: 8px 16px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background 0.2s ease;
+  margin-top: 0px;
+}
+.features-title {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin: 0 0 12px 0;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+}
+.feat-icon { 
+  width: 28px; 
+  height: 28px; 
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(18%) sepia(4%) saturate(15%) hue-rotate(319deg) brightness(95%) contrast(88%);
+}
+.feat-name { 
+  font-size: 12px; 
+  line-height: 18px;
+  color: #8F8F8F; 
+  text-align: center; 
 }
 
-.redeem-btn:hover {
-  background: #1976D2;
-}
 
-@media (max-width: 768px) {
-  .member-benefits {
-    padding: 16px;
-  }
-  
-  .benefits-grid,
-  .levels-container,
-  .mall-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .member-level {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .level-icon {
-    margin-right: 0;
-    margin-bottom: 16px;
-  }
-}
 </style>
